@@ -1,0 +1,35 @@
+artifacts_root : artifacts
+
+# Data Ingestion
+
+data_ingestion:
+  root_dir : artifacts/data_ingestion
+  source_location : Dataset/UCI_Credit_Card.csv
+  local_data_file  : artifacts/data_ingestion/data.csv
+
+# Data validation
+
+data_validation:
+  root_dir: artifacts/data_validation
+  STATUS_FILE: artifacts/data_validation/status.txt
+  data_dir: artifacts/data_ingestion/UCI_Credit_Card.csv
+
+
+# Data Transformation
+data_transformation:
+  root_dir: artifacts/data_transformation
+  data_path: artifacts/data_ingestion/winequality-white.csv
+
+# model Training
+model_trainer:
+  root_dir: artifacts/model_trainer
+  train_data_path: artifacts/data_transformation/train.csv
+  test_data_path: artifacts/data_transformation/test.csv
+  model_name: model.joblib
+
+# Model evaluation
+model_evaluation:
+  root_dir: artifacts/model_evaluation
+  test_data_path: artifacts/data_transformation/test.csv
+  model_path: artifacts/model_trainer/model.joblib
+  metric_file_name: artifacts/model_evaluation/metrics.json

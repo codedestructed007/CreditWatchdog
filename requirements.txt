@@ -3,3 +3,10 @@ numpy
 matplotlib
 seaborn
 scikit-learn
+python-box==6.0.2
+pyYAML
+ensure==1.0.2
+joblib
+imblearn
+feature_engine
+xgboost

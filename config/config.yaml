@@ -23,13 +23,16 @@ data_transformation:
 # model Training
 model_trainer:
   root_dir: artifacts/model_trainer
-  train_data_path: artifacts/data_transformation/train.csv
-  test_data_path: artifacts/data_transformation/test.csv
+  train_input_data_path: artifacts/data_transformation/X_train.csv
+  test_input_data_path : artifacts/data_transformation/X_test.csv
+  train_output_data_path : artifacts/data_transformation/y_train.csv
+  test_output_data_path: artifacts/data_transformation/y_test.csv
   model_name: model.joblib
 
 # Model evaluation
 model_evaluation:
   root_dir: artifacts/model_evaluation
-  test_data_path: artifacts/data_transformation/test.csv
+  test_input_data_path: artifacts/data_transformation/X_test.csv
+  test_ouput_data_path : artifacts/data_transformation/y_test.csv
   model_path: artifacts/model_trainer/model.joblib
   metric_file_name: artifacts/model_evaluation/metrics.json

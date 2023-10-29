@@ -1,0 +1,4 @@
+parameters :
+  n_estimators : 30
+  algorithm : 'SAMME'
+  learning_rate : 0.5

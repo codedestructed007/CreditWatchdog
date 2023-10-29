@@ -22,3 +22,24 @@ class DataTransformationConfig:
     root_dir : Path
     data_path : Path
     
+
+# Model training
+@dataclass(frozen = True)
+class ModelTrainingConfig:
+    root_dir : Path
+    train_input_data_path : Path
+    test_input_data_path : Path
+    train_output_data_path : Path
+    test_output_data_path : Path
+    parameters : dict
+    model : str
+    
+    
+# Model Evaluation
+@dataclass(frozen=True)
+class ModelEvaluationconfig:
+    root_dir : Path
+    model_dir : Path
+    test_input_data : Path
+    test_output_data : Path
+    metric_file_name : Path

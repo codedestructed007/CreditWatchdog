@@ -6,7 +6,7 @@ with open('README.md', 'r', encoding='utf8') as f:
 
 REPO_NAME  = 'CreditWatchdog'
 AUTHER_USER_NAME = 'codedestructed007'
-SRC_REPO = 'mlproject'
+SRC_REPO = 'CreditWatchdog'
 AUTHER_EMAIL = 'codexistslonglastingnotfog@gmail.com'
 
 setuptools.setup(
@@ -36,7 +36,7 @@ setuptools.setup(
 
 )
 
-found_packages = setuptools.find_packages(where='src')
+found_packages = setuptools.find_packages(where='src\mlproject')
 print("Found packages:")
 for package in found_packages:
     print(package)

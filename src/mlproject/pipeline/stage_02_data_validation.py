@@ -1,7 +1,10 @@
+import sys
+sys.path.append(r"C:\Users\Dell\OneDrive\Desktop\Real_projects\Credit_Card_Fraud_Detection")
 import os
 from src.mlproject import logger
 from src.mlproject.config.configuration import  ConfigurationManager
 from src.mlproject.components.data_validation import  DataValidation
+
 
 STAGE_NAME = 'Data Validation Stage'
 
@@ -10,10 +13,10 @@ class DataValidationTrainingPipeline:
         pass
     def main(self):
         config = ConfigurationManager()
-        data_ingestion_config = config.get_data_validation_config()
+        data_validation_config = config.get_data_validation_config()
         
-        data_ingestion = DataValidation(data_ingestion_config)
-        data_ingestion.validate_all_columns
+        data_validation = DataValidation(data_validation_config)
+        data_validation.validate_all_columns()
 
 
 if __name__ == '__main__':

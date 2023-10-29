@@ -12,7 +12,7 @@ data_ingestion:
 data_validation:
   root_dir: artifacts/data_validation
   STATUS_FILE: artifacts/data_validation/status.txt
-  data_dir: artifacts/data_ingestion/UCI_Credit_Card.csv
+  data_dir: artifacts/data_ingestion/data.csv
 
 
 # Data Transformation

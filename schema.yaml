@@ -23,6 +23,6 @@ COLUMNS:
   PAY_AMT3 : float64
   PAY_AMT4 : float64
   PAY_AMT5 : float64
-  PAY_AMT6 : flaot64
+  PAY_AMT6 : float64
   default.payment.next.month : int64
 

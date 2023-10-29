@@ -13,7 +13,7 @@ class ConfigurationManager:
                  schema_filepath = SCHEMA_FILE_PATH):
 
         self.config = read_yaml(config_filepath)
-        self.params = read_yaml(params_filepath)
+        # self.params = read_yaml(params_filepath)
         self.schema = read_yaml(schema_filepath)
         create_directories([self.config.artifacts_root])
 
@@ -32,7 +32,7 @@ class ConfigurationManager:
     # data validation configuration:
     def get_data_validation_config(self) -> DataValidationConfig:
         config = self.config.data_validation
-        schema = self.config.COLUMNS
+        schema = self.schema.COLUMNS
         
         create_directories([config.root_dir])
         

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Credit Card Default Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #00447c;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .bank-logo {
+            display: block;
+            margin: -30px;
+            float : left;
+            max-width: 200px;
+        }
+        .tagline {
+            color: #2E8B57;
+            font-size: 10px; /* Adjusted font size */
+            font-style: italic; /* Added italic style */
+            margin-top: 5px; /* Reduced top margin */
+        }
+        .notice {
+            text-align: right;
+            margin-top: 10px;
+            color: #ff0000;
+        }
+        
+        .notice p {
+            font-style: italic;
+            font-size: 14px;
+            font-weight: bold;
+        }
+       
+    
+       
+        
+    </style>
+</head>
+<body>
+    <header>
+        <a href = '/'>
+            <img class="bank-logo" src="static\preview-removebg-preview.png" alt="Bank Logo">
+            </a>
+        <h1>Credit card form</h1>
+    </header>
+    <div class="container">
+        <div class="notice">
+            <p>* Fill in all the information in the form to expedite the credit card application process.</p>
+        </div>
+        <form id="credit card form" method="POST" action="/predict">
+          
+
+            <label for="limit" title='Enter your desiered credit limit'>Credit Limit:</label>
+            <input type="number" id="limit" name="limit" required>
+
+
+            <label for="age">Age:(years)</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="pay_0" title = "[-2]  No consumption [-1]  Pay duly [0]  Use of revolving credit [x]  x months delayed ">September payment status:</label>
+            <input type="number" id="pay_0" name="pay_0" required>
+        
+            <label for="pay_2" title = "[-2]  No consumption [-1]  Pay duly [0]  Use of revolving credit [x]  x months delayed">August payment status: </label>
+            <input type="number" id="pay_2" name="pay_2" required>
+        
+            <label for="pay_3" title = "[-2]  No consumption [-1]  Pay duly [0]  Use of revolving credit [x]  x months delayed ">July Payment Status:</label>
+            <input type="number" id="pay_3" name="pay_3" required>
+        
+            <label for="pay_4" title = "[-2]  No consumption [-1]  Pay duly [0]  Use of revolving credit [x]  x months delayed ">June Payment Status: </label>
+            <input type="number" id="pay_4" name="pay_4" required>
+        
+            <label for="pay_5"title = "[-2]  No consumption [-1]  Pay duly [0]  Use of revolving credit [x]  x months delayed ">May Payment Status: </label>
+            <input type="number" id="pay_5" name="pay_5" required>
+        
+            <label for="pay_6" title = "[-2]  No consumption [-1]  Pay duly [0]  Use of revolving credit [x]  x months delayed ">April Payment Status:</label>
+            <input type="number" id="pay_6" name="pay_6" required>
+
+        
+            <label for="dues" title  = 'Total amount from  April to September'>Dues:</label>
+            <input type="number" id="dues" name="dues" required>
+
+            <label for="previous_payments" title = 'April to September'>Previous payments:</label>
+            <input type="number" id="previous_payments" name="previous_payments" required>
+    
+        
+            <label for="SEX_1" title = ''>Male</label>
+            <input type="number" id="sex_1" name="sex_1" required>
+
+            <label for="SEX_2" title = '[1] - Yes [0] - No'>Female</label>
+            <input type="number" id="sex_2" name="sex_2" required> 
+            
+      
+            <label for="Education_1" title = '[1] - Yes [0] - No'>Graduate</label>
+            <input type="number" id="Education_1" name="Education_1" required>
+
+            <label for="Education_2" title = '[1] - Yes [0] - No'>University</label>
+            <input type="number" id="Education_2" name="Education_2" required>
+
+            <label for="Education_3" title = '[1] - Yes [0] - No'>High School</label>
+            <input type="number" id="Education_3" name="Education_3" required>
+
+            <label for="Education_4" title = '[1] - Yes [0] - No'>Other</label>
+            <input type="number" id="Education_4" name="Education_4" required>
+
+
+            <label for="Marriage_1" title = '[1] - Yes [0] - No'>Married</label>
+            <input type="number" id="Marriage_1" name="Marriage_1" required>
+
+            <label for="Marriage_2" title = '[1] - Yes [0] - No'>Single</label>
+            <input type="number" id="Marriage_2" name="Marriage_2" required>
+
+            <label for="Marriage_3" title = '[1] - Yes [0] - No'>Others</label>
+            <input type="number" id="Marriage_3" name="Marriage_3" required>
+
+            
+            <button class = 'result_popup' type="submit">Sumbit your application</button>
+        </form>
+        <div id="popup" class="popup">
+            <span class="popup-content" id="result-popup"></span>
+        </div>
+        
+
+
+
+        
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("#credit-card-form").submit(function(e) {
+                e.preventDefault();  // Prevent the form from submitting normally
+                var formData = $(this).serialize();
+    
+                $.ajax({
+                    type: "POST",
+                    url: "/predict",
+                    data: formData,
+                    dataType: "json",
+                    success: function(response) {
+                        var resultPopup = $("#result-popup");
+                        if (response.result !== undefined) {
+                            resultPopup.text(response.result);
+                        } else {
+                            resultPopup.text("An error occurred.");
+                        }
+                        $("#popup").show();  // Show the pop-up
+                    },
+                    error: function() {
+                        resultPopup.text("An error occurred.");
+                        $("#popup").show();  // Show the pop-up
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#popup").hide();
+        });
+    </script>
+    
+    
+</body>
+</html>

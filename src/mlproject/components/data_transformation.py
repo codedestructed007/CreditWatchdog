@@ -35,7 +35,17 @@ class DataTransformation:
                 'PAY_AMT5' : 'previous_payment_may',
                 'PAY_AMT6' : 'previous_payment_april',
                 'default.payment.next.month' : 'will_default'
-})       
+})          
+            #replacing some educations values to a valid category
+            
+            df['EDUCATION'].replace({
+                0 : 4, 5 : 4, 6: 4
+            },inplace=True)
+            
+            df['MARRIAGE'].replace({
+                0 : 3
+            }, inplace=True)
+            
             df['Dues'] = df['bill_sept'] + df['bill_aug'] + df['bill_july']+ df['bill_june'] + df['bill_may'] + df['bill_april']
             df['Previous_payments'] = df['previous_payment_april'] + df['previous_payment_aug']+df['previous_payment_july'] + df['previous_payment_june']+df['previous_payment_may'] + df['previous_payment_sept']
             return df
@@ -54,7 +64,7 @@ class DataTransformation:
     
     def preprocess_before_training(self,df_encoded):
         try:
-            df_encoded.drop(['ID','bill_sept','bill_aug','bill_july','bill_june','bill_may','bill_april','previous_payment_sept','previous_payment_aug','previous_payment_july','previous_payment_june','previous_payment_may','previous_payment_may','previous_payment_april'],axis=1, inplace=True)
+            df_encoded.drop(['ID','bill_sept','bill_aug','bill_july','bill_june','bill_may','bill_april','previous_payment_sept','previous_payment_aug','previous_payment_july','previous_payment_may','previous_payment_june','previous_payment_april'],axis=1, inplace=True)
             logger.info('Final Preprocessing sucessfully completed')
             
             return df_encoded

@@ -66,7 +66,7 @@ class ConfigurationManager:
             train_output_data_path=config.train_output_data_path,
             test_output_data_path=config.test_output_data_path,
             parameters=params.parameters,
-            model_name=config.model_name
+            model=config.model_name
             
         )
         return model_training_config

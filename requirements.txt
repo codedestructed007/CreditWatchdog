@@ -10,3 +10,4 @@ joblib
 imblearn
 feature_engine
 xgboost
+flask

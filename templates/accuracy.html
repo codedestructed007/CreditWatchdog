@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Machine Learning Project - Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #00447c;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        .bank-logo {
+            display: block;
+            margin: -30px;
+            float: left;
+            max-width: 200px;
+        }
+        .tagline {
+            color: #2E8B57;
+            font-size: 10px;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .content {
+            margin-bottom: 20px;
+        }
+        footer {
+            background-color: #00447c;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .footer-logo {
+            max-width: 100px;
+            margin: 0 10px;
+        }
+        .footer-links {
+            margin-top: 10px;
+        }
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .small-logo {
+            width: 30px; /* Adjust the size as needed */
+            height: auto; /* This maintains the aspect ratio */
+        }
+        
+        .home-button:hover {
+            background-color: #003265; /* Darker shade on hover */
+        }
+        .download-button {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            background-color: #00447c;
+            border: none;
+            border-radius: 5px;
+        }
+        .download-button:hover {
+            background-color: #00447c;
+        }
+        .download-box {
+            position : absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #00447;
+            padding: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href = '/'>
+        <img class="bank-logo" src="static\preview-removebg-preview.png" alt="Bank Logo">
+        </a>
+        <h1>How much you can trust our model?</h1>
+        <p class="tagline">Exploring Machine Learning Techniques for Credit Card Default Prediction</p>
+        <div class="download-box">
+            <a class="download-button" href="https://www.kaggle.com/code/satyamsss/credit-card-default-prediction-82-accurate" download>Notebook</a>
+        </div>
+    </header>
+    
+    <div class="container"><img src="static\ai_accuracy_model.jpg" alt="accuray page" width="800" height="500">
+        <div class="content">
+            <h2>Table of Contents</h2>
+            <ol>
+                <li><a href="#problem">Problem Statement</a></li>
+                <li><a href="#data-preparation">Data Preparation</a></li>
+                <li><a href="#feature-engineering">Feature Engineering</a></li>
+                <li><a href="#feature-scaling">Feature Scaling</a></li>
+                <li><a href="#feature-encoding-one-hot">Feature Encoding</a></li>
+                <li><a href="#model-training-results">Model Training</a></li>
+                <li><a href="#model-training-results">Model Training</a></li>
+                <li><a href="#model-training-results">Model Training</a></li>
+                <li><a href="#model-hypertuning-tuning">Model Hypertuning</a></li>
+                <li><a href="#model-accuracy_evaluation">Model Evaluation</a></li>
+                <li><a href="#conclusion">Conclusion</a></li>
+                <!-- Add more entries as you create more sections -->
+            </ol>
+        </div>
+
+        <div class="content">
+            <h2 id="problem">Problem Statement</h2>
+            <p>In the contemporary world of "Buy now, pay later," the ubiquitous advertising slogan promising instant gratification without immediate payment has gained significant traction. While this marketing approach provides a dopamine surge and the allure of possessing a product without the requisite financial means, it often results in financial strain and an overwhelming burden of debt. Individuals may find themselves categorized as potential defaulters.</p>
+            <p>To tackle this challenge, we acknowledge that compelling companies to alter their marketing strategies, particularly those containing catchy slogans, is an arduous endeavor. However, we can adopt a proactive approach by evaluating the creditworthiness of buyers based on their historical financial track record.</p>
+            <p>Machine learning is the linchpin of our solution. Harnessing the capabilities of artificial intelligence and predictive models, our aim is to forecast the probability of credit card defaults. Our goal is to discern individuals who may be at risk of failing to meet their payment obligations and make well-informed decisions regarding credit issuance.</p>
+            <p>This machine learning project underscores the prowess of AI in addressing tangible financial challenges. By crafting predictive models capable of assessing an individual's credit risk, we endeavor to offer a more prudent and informed approach to credit card issuance, benefiting both financial institutions and consumers.</p>
+        </div>
+        
+        <div class="content">
+            <h2 id="data-preparation">Data Preparation</h2>
+            <p>Data preparation is a fundamental step in ensuring the quality and reliability of our dataset for credit card default prediction. It involves a series of crucial tasks to make the data ready for analysis and modeling.</p>
+            <p>1. <strong>Data Cleaning:</strong> The first step in data preparation is data cleaning. We meticulously examined the dataset to identify and rectify missing values. Fortunately, our initial evaluation revealed that there are no missing values in the dataset. This ensures the completeness and reliability of our data, providing a strong foundation for our analysis.</p>
+            <p>2. <strong>Outlier Analysis:</strong> To maintain data integrity, we performed an outlier analysis. This involved identifying any potential outliers within the dataset. We are pleased to report that no outliers were found during this analysis, which further strengthens the robustness of our data for building accurate credit card default prediction models.</p>
+            <p>3. <strong>Data Transformation:</strong> Data transformation techniques, such as encoding categorical variables and scaling numerical features, were applied to ensure the data's suitability for machine learning algorithms. These transformations make the data more amenable to modeling and analysis.</p>
+            <p>With a clean, complete, and transformed dataset, we have laid a strong foundation for the subsequent phases of feature engineering, model development, and evaluation. The meticulous data preparation process ensures that our credit card default prediction models are built on a reliable dataset, increasing the accuracy of our predictions and ultimately benefiting both financial institutions and consumers.</p>
+        </div>
+        
+<div class="content">
+    <h2 id="feature-engineering">Feature Engineering</h2>
+    <p>Feature engineering is a pivotal phase in the process of building credit card default prediction models. It involves crafting and selecting relevant features or variables from the dataset to enhance the predictive power of the models.</p>
+    <p>Our data scientists have diligently explored the dataset, identifying key features that play a crucial role in predicting credit card defaults. Some of the notable features include:</p>
+    <ul>
+        <li>Payment History: Analysis of an individual's past payment records and whether payments were made on time.</li>
+        <li>Outstanding Balances: Evaluating the outstanding balances on credit cards and loans.</li>
+        <li>Credit Limit: The maximum amount a cardholder can borrow or charge on their credit card.</li>
+        <li>Utilization Rate: The proportion of the credit limit used by the cardholder.</li>
+        <li>Demographic Information: Factors such as age, gender, education, and marital status, which can influence credit behavior.</li>
+    </ul>
+    <p>These features, among others, have been carefully curated to ensure that the predictive models are equipped with the necessary information to make accurate predictions regarding credit card defaults.</p>
+    <p>Feature engineering also involves encoding categorical variables, scaling numerical features, and creating new derived features that can provide valuable insights into a borrower's creditworthiness. The transformation of data during this phase is vital to improving the performance of the machine learning models.</p>
+    <p>With feature engineering complete, we have refined the dataset to include the most relevant information for predicting credit card defaults. The data is now primed for model training and evaluation.</p>
+</div>
+
+
+<div class="content">
+    <h2 id="feature-scaling">Feature Scaling</h2>
+    <p>Feature scaling is a critical step in data preprocessing that aims to bring all numerical features to a common scale. This process ensures that no single feature dominates the others during the training of machine learning models.</p>
+    <p>Our dataset contains numerical features with varying ranges, which can impact the performance of predictive models. To address this, we employed feature scaling techniques, specifically the Yeo-Johnson transformation. This method helps to normalize the distribution of numerical variables, making them more suitable for modeling.</p>
+    <p>Feature scaling has several advantages, including:</p>
+    <ul>
+        <li><strong>Improved Model Performance:</strong> Scaling features prevents models from being biased toward variables with larger numerical values, resulting in more accurate predictions.</li>
+        <li><strong>Convergence Speed:</strong> Scaling can lead to faster convergence of machine learning algorithms, reducing the time required to train models.</li>
+        <li><strong>Enhanced Interpretability:</strong> Scaling makes it easier to interpret the importance of features and their impact on predictions.</li>
+    </ul>
+    <p>By applying the Yeo-Johnson transformation, we've standardized our numerical features, ensuring that the models can work more effectively in predicting credit card defaults. This step enhances the overall quality of our dataset and contributes to the accuracy of our predictive models.</p>
+</div>
+
+<div class="content">
+    <h2 id="feature-encoding-one-hot">Feature Encoding - One-Hot Encoding</h2>
+    <p>Feature encoding is a crucial step in preparing our dataset for machine learning models. It involves converting categorical variables into a numerical format that algorithms can work with effectively. One commonly used method for categorical variable encoding is one-hot encoding.</p>
+    <p>In our dataset, we encountered several categorical features, such as education level and marital status, that needed to be transformed into a numerical format. One-hot encoding was the chosen approach for this task.</p>
+    <p>Here's how one-hot encoding works:</p>
+    <ul>
+        <li><strong>Creating Binary Columns:</strong> For each unique category within a categorical feature, one-hot encoding creates a binary column. Each binary column represents a specific category and is assigned a value of 0 or 1, depending on whether the original data point belongs to that category.</li>
+        <li><strong>Preserving Information:</strong> One-hot encoding preserves the information from the categorical variable while ensuring that machine learning models can interpret it correctly.</li>
+        <li><strong>Independence:</strong> The binary columns created by one-hot encoding are independent of each other, which prevents any ordinal interpretation of the original categories.</li>
+    </ul>
+    <p>One-hot encoding is particularly effective when dealing with categorical variables that do not have a natural ordinal relationship, as is the case in our dataset. It helps our models recognize the distinctions between different categories and use this information for making accurate credit card default predictions.</p>
+    <p>By applying one-hot encoding, we have successfully transformed categorical features into a format that allows our machine learning models to utilize this valuable information in the prediction process.</p>
+</div>
+
+<div class="content">
+    <h2 id="model-training-results">Model Training and Results</h2>
+    <p>For our credit card default prediction project, we trained multiple machine learning algorithms on different datasets, including the one with Synthetic Minority Over-sampling Technique (SMOTE) applied, feature scaling, and more. These algorithms included:</p>
+    <ul>
+        <li>Support Vector Machine (SVC)</li>
+        <li>Decision Tree Classifier (DTC)</li>
+        <li>Random Forest Classifier</li>
+        <li>K-Nearest Neighbors (KNN)</li>
+        <li>Logistic Regression (LR)</li>
+        <li>XGBoost Classifier (XGB)</li>
+        <li>AdaBoost Classifier</li>
+    </ul>
+    <p>After rigorous training and testing, we obtained the following accuracy results for our first dataset with SMOTE applied:</p>
+
+    <div>
+        <style scoped>
+            .dataframe tbody tr th:only-of-type {
+                vertical-align: middle;
+            }
+
+            .dataframe tbody tr th {
+                vertical-align: top;
+            }
+
+            .dataframe thead th {
+                text-align: right;
+            }
+        </style>
+        <table border="1" class="dataframe">
+            <thead>
+                <tr style="text-align: right;">
+                    <th></th>
+                    <th>Algorithm</th>
+                    <th>Accuracy(Train)</th>
+                    <th>Accuracy(Test)</th>
+                    <th>Test accuracy(MSE)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>0</th>
+                    <td>Support Vector Machine</td>
+                    <td>0.615705</td>
+                    <td>0.615905</td>
+                    <td>0.384095</td>
+                </tr>
+                <tr>
+                    <th>1</th>
+                    <td>Decision Tree Classifier</td>
+                    <td>0.999429</td>
+                    <td>0.741397</td>
+                    <td>0.258603</td>
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <td>AdaBoost Classifier</td>
+                    <td>0.751669</td>
+                    <td>0.758945</td>
+                    <td>0.241055</td>
+                </tr>
+                <tr>
+                    <th>3</th>
+                    <td>Random Forest Classifier</td>
+                    <td>0.999429</td>
+                    <td>0.813046</td>
+                    <td>0.186954</td>
+                </tr>
+                <tr>
+                    <th>4</th>
+                    <td>K-Neighbors Classifier</td>
+                    <td>0.773612</td>
+                    <td>0.649461</td>
+                    <td>0.350539</td>
+                </tr>
+                <tr>
+                    <th>5</th>
+                    <td>Logistic Regression</td>
+                    <td>0.557867</td>
+                    <td>0.556840</td>
+                    <td>0.443160</td>
+                </tr>
+                <tr>
+                    <th>6</th>
+                    <td>XGBoost Classifier</td>
+                    <td>0.856246</td>
+                    <td>0.808338</td>
+                    <td>0.191662</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>After extensive training and testing, we obtained the following accuracy results for our scaled unbalanced dataset:</p>
+
+    <div>
+        <style scoped>
+            .dataframe tbody tr th:only-of-type {
+                vertical-align: middle;
+            }
+
+            .dataframe tbody tr th {
+                vertical-align: top;
+            }
+
+            .dataframe thead th {
+                text-align: right;
+            }
+        </style>
+        <table border="1" class="dataframe">
+            <thead>
+                <tr style="text-align: right;">
+                    <th></th>
+                    <th>Algorithm</th>
+                    <th>Accuracy(Train)</th>
+                    <th>Accuracy(Test)</th>
+                    <th>Test accuracy(MSE)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>0</th>
+                    <td>Support Vector Machine</td>
+                    <td>0.775867</td>
+                    <td>0.787600</td>
+                    <td>0.212400</td>
+                </tr>
+                <tr>
+                    <th>1</th>
+                    <td>Decision Tree Classifier</td>
+                    <td>0.999422</td>
+                    <td>0.725067</td>
+                    <td>0.274933</td>
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <td>AdaBoost Classifier</td>
+                    <td>0.817022</td>
+                    <td>0.822667</td>
+                    <td>0.177333</td>
+                </tr>
+                <tr>
+                    <th>3</th>
+                    <td>Random Forest Classifier</td>
+                    <td>0.999333</td>
+                    <td>0.813600</td>
+                    <td>0.186400</td>
+                </tr>
+                <tr>
+                    <th>4</th>
+                    <td>K-Neighbors Classifier</td>
+                    <td>0.837733</td>
+                    <td>0.798000</td>
+                    <td>0.202000</td>
+                </tr>
+                <tr>
+                    <th>5</th>
+                    <td>Logistic Regression</td>
+                    <td>0.775867</td>
+                    <td>0.787600</td>
+                    <td>0.212400</td>
+                </tr>
+                <tr>
+                    <th>6</th>
+                    <td>XGBoost Classifier</td>
+                    <td>0.868889</td>
+                    <td>0.818133</td>
+                    <td>0.181867</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>Following rigorous training and testing, we obtained the following accuracy results for our scaled balanced dataset with SMOTE:</p>
+
+    <div>
+        <style scoped>
+            .dataframe tbody tr th:only-of-type {
+                vertical-align: middle;
+            }
+
+            .dataframe tbody tr th {
+                vertical-align: top;
+            }
+
+            .dataframe thead th {
+                text-align: right;
+            }
+        </style>
+        <table border="1" class="dataframe">
+            <thead>
+                <tr style="text-align: right;">
+                    <th></th>
+                    <th>Algorithm</th>
+                    <th>Accuracy(Train)</th>
+                    <th>Accuracy(Test)</th>
+                    <th>Test accuracy(MSE)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>0</th>
+                    <td>Support Vector Machine</td>
+                    <td>0.777378</td>
+                    <td>0.783067</td>
+                    <td>0.216933</td>
+                </tr>
+                <tr>
+                    <th>1</th>
+                    <td>Decision Tree Classifier</td>
+                    <td>0.999378</td>
+                    <td>0.724400</td>
+                    <td>0.275600</td>
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <td>AdaBoost Classifier</td>
+                    <td>0.819822</td>
+                    <td>0.819467</td>
+                    <td>0.180533</td>
+                </tr>
+                <tr>
+                    <th>3</th>
+                    <td>Random Forest Classifier</td>
+                    <td>0.999378</td>
+                    <td>0.811200</td>
+                    <td>0.188800</td>
+                </tr>
+                <tr>
+                    <th>4</th>
+                    <td>K-Neighbors Classifier</td>
+                    <td>0.838933</td>
+                    <td>0.793067</td>
+                    <td>0.206933</td>
+                </tr>
+                <tr>
+                    <th>5</th>
+                    <td>Logistic Regression</td>
+                    <td>0.777378</td>
+                    <td>0.783067</td>
+                    <td>0.216933</td>
+                </tr>
+                <tr>
+                    <th>6</th>
+                    <td>XGBoost Classifier</td>
+                    <td>0.868444</td>
+                    <td>0.816400</td>
+                    <td>0.183600</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>Following comprehensive training and testing, we obtained the following accuracy results for our simple dataframe, df_new:</p>
+
+    <div>
+        <style scoped>
+            .dataframe tbody tr th:only-of-type {
+                vertical-align: middle;
+            }
+
+            .dataframe tbody tr th {
+                vertical-align: top;
+            }
+
+            .dataframe thead th {
+                text-align: right;
+            }
+        </style>
+        <table border="1" class="dataframe">
+            <thead>
+                <tr style="text-align: right;">
+                    <th></th>
+                    <th>Algorithm</th>
+                    <th>Accuracy(Train)</th>
+                    <th>Accuracy(Test)</th>
+                    <th>Test accuracy(MSE)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>0</th>
+                    <td>Support Vector Machine</td>
+                    <td>0.777644</td>
+                    <td>0.782267</td>
+                    <td>0.217733</td>
+                </tr>
+                <tr>
+                    <th>1</th>
+                    <td>Decision Tree Classifier</td>
+                    <td>0.999467</td>
+                    <td>0.732933</td>
+                    <td>0.267067</td>
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <td>AdaBoost Classifier</td>
+                    <td>0.819289</td>
+                    <td>0.816400</td>
+                    <td>0.183600</td>
+                </tr>
+                <tr>
+                    <th>3</th>
+                    <td>Random Forest Classifier</td>
+                    <td>0.999422</td>
+                    <td>0.810933</td>
+                    <td>0.189067</td>
+                </tr>
+                <tr>
+                    <th>4</th>
+                    <td>K-Neighbors Classifier</td>
+                    <td>0.808533</td>
+                    <td>0.752400</td>
+                    <td>0.247600</td>
+                </tr>
+                <tr>
+                    <th>5</th>
+                    <td>Logistic Regression</td>
+                    <td>0.777644</td>
+                    <td>0.782267</td>
+                    <td>0.217733</td>
+                </tr>
+                <tr>
+                    <th>6</th>
+                    <td>XGBoost Classifier</td>
+                    <td>0.871244</td>
+                    <td>0.815467</td>
+                    <td>0.184533</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>In this section, we have extensively explored the results of training various machine learning models on different datasets. The goal was to identify the most suitable model and preprocessing techniques for credit card default prediction. Here are the key takeaways from our analysis:</p>
+    <ul>
+        <li>Among all the models evaluated, <strong>AdaboostClassifier</strong> and <strong>XGBClassifier</strong> consistently outperformed the others in terms of accuracy. These models demonstrated the highest test accuracy across different datasets, making them strong contenders for credit card default prediction.</li>
+        <li>It's noteworthy that even after applying preprocessing techniques like scaling and balancing the dataset with SMOTE, there was minimal improvement in model accuracy. This suggests that the inherent characteristics of the datasets played a more significant role in model performance.</li>
+        <li>Considering the overall performance and simplicity, we recommend using the <strong>AdaboostClassifier</strong> model with the <strong>df_new</strong> dataset for credit card default prediction. It offers robust accuracy while maintaining the dataset's simplicity.</li>
+    </ul>
+     <p>Based on these results, we can see that the Random Forest Classifier achieved the highest test accuracy of 81.30%, making it a promising candidate for credit card default prediction. We will continue to analyze and fine-tune our models to ensure accurate and reliable predictions for our customers.</p>
+</div>
+
+<div class = 'container'>
+    <!-- Model Hyperparameter Tuning -->
+<h2 id="model-hyperparameter-tuning">Model Hyperparameter Tuning (AdaboostClassifier)</h2>
+<p>Optimizing the hyperparameters of the <strong>AdaboostClassifier</strong> is crucial to ensure the best performance for credit card default prediction. In this section, we'll explore the hyperparameter tuning process, the selected hyperparameters, and their impact on the model's performance.</p>
+
+<p>We used the <strong>GridSearchCV</strong> technique to search for the optimal combination of hyperparameters. The hyperparameters tuned for the <strong>AdaboostClassifier</strong> are as follows:</p>
+
+<ul>
+    <li><strong>n_estimators:</strong> Number of weak learners (base models) to train. We tested values of 30, 50, 70, and 100.</li>
+    <li><strong>algorithm:</strong> The boosting algorithm to use. We considered both 'SAMME' and 'SAMME.R'.</li>
+    <li><strong>learning_rate:</strong> The contribution of each weak learner. We experimented with values of 0.5, 0.7, 1, and 1.4.</li>
+</ul>
+
+<p>GridSearchCV exhaustively tested different combinations of these hyperparameters and evaluated the model's performance using cross-validation. The hyperparameters that resulted in the best performance were chosen for our final <strong>AdaboostClassifier</strong>.</p>
+
+<p>After the hyperparameter tuning process, the selected hyperparameters and their corresponding values are as follows:</p>
+
+<ul>
+    <li><strong>n_estimators:</strong> 50</li>
+    <li><strong>algorithm:</strong> 'SAMME.R'</li>
+    <li><strong>learning_rate:</strong> 1</li>
+</ul>
+
+<p>These hyperparameters are essential in achieving the optimal balance between bias and variance in our model. The tuning process enhances the model's ability to generalize to unseen data and make more accurate predictions.</p>
+
+<p>Now that we have fine-tuned our <strong>AdaboostClassifier</strong>, let's explore its performance and evaluate its accuracy and effectiveness in credit card default prediction.</p>
+</div>
+<!-- Model Accuracy and Evaluation -->
+<div class="content">
+    <h2 id="model-accuracy-evaluation">Model Accuracy and Evaluation</h2>
+    <p>After selecting the <strong>AdaboostClassifier</strong> as our final model, we evaluated its performance on the test dataset. Here are the accuracy results and evaluation metrics:</p>
+    
+    <h3>Accuracy:</h3>
+    <p>The final accuracy of the model on the test dataset is <strong>81.96%</strong>.</p>
+    
+    <h3>Classification Report:</h3>
+    <pre>
+              precision    recall  f1-score   support
+
+           0       0.84      0.95      0.89      5873
+           1       0.67      0.34      0.45      1627
+
+    accuracy                           0.82      7500
+   macro avg       0.75      0.65      0.67      7500
+weighted avg       0.80      0.82      0.80      7500
+    </pre>
+    
+    <h3>Confusion Matrix:</h3>
+    <pre>
+[[5596  277]
+ [1076  551]]
+    </pre>
+</div>
+
+</div>
+
+<!-- Conclusion -->
+<div class="content">
+    <h2 id="conclusion">Conclusion</h2>
+    <p>In this comprehensive analysis, we tackled the challenge of credit fraud detection using machine learning. Our journey led us through various critical steps, from data preprocessing to model training and evaluation. Here's a summary of our findings:</p>
+    
+    <ul>
+        <li>We explored the problem of 'Buy Now Pay Later' marketing strategies, which can lead to increased credit fraud. We discussed the importance of assessing a customer's creditworthiness based on their past history.</li>
+        <li>We meticulously prepared and cleaned the dataset, checking for null values and outliers. We engineered new features to improve model performance.</li>
+        <li>Four different datasets were considered: one unbalanced, one with SMOTE oversampling, one scaled using the Yeo-Johnson technique, and one combining both scaling and SMOTE balancing.</li>
+        <li>We trained seven different machine learning models on these datasets, including Support Vector Machine, Decision Tree, Adaboost, Random Forest, K-Nearest Neighbors, Logistic Regression, and XGBoost.</li>
+        <li>Our analysis revealed that the AdaboostClassifier and XGBClassifier outperformed the other models in terms of accuracy, with AdaboostClassifier showing the highest accuracy.</li>
+        <li>Based on the results, we selected the AdaboostClassifier for further evaluation.</li>
+        <li>The final model achieved an accuracy of 81.96% on the test dataset, with promising precision and recall metrics.</li>
+        <li>In conclusion, our approach to credit fraud detection using machine learning is a significant step forward in addressing the challenges posed by 'Buy Now Pay Later' marketing. The selected AdaboostClassifier model demonstrates strong potential for real-world applications in credit risk assessment and fraud detection.</li>
+    </ul>
+    
+    <p>We hope this analysis provides valuable insights and contributes to the ongoing efforts to ensure a secure and responsible financial environment for all.</p>
+</div>
+
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <a href="https://www.github.com/codedestructed007/Portfolio"><img class="footer-logo small-logo" src="static\github-logo.png" alt="GitHub Logo"></a>
+            <a href="https://www.linkedin.com/in/satyamsharma61541425b"><img class="footer-logo small-logo" src="static\linkedin.png" alt="LinkedIn Logo"></a>
+            <a href="https://www.medium.com/@codexistslonglastingnotfog/django-rest-framework-a-step-by-step-guide-with-code-examples-efe9665b59d8"><img class="footer-logo small-logo" src="static\medium.png" alt="Medium Logo"></a
+        </div>
+    </footer>
+</body>
+</html>

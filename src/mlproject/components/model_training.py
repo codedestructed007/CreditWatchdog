@@ -26,7 +26,7 @@ class ModelTrainer:
         adc.fit(X_train,y_train)
         logger.info('Model Training successfull')
         
-        file_path = os.path.join(self.config.root_dir,self.config.model_name)
+        file_path = os.path.join(self.config.root_dir,self.config.model)
         
         joblib.dump(adc,file_path)
     

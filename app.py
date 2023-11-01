@@ -1,3 +1,4 @@
+import time
 from flask import Flask, render_template , request, jsonify
 from src.mlproject.components.data_transformation import DataTransformation
 from src.mlproject.config.configuration import ConfigurationManager
@@ -65,13 +66,18 @@ def prediction():
             model = joblib.load(model_path)
             
             #prediction
+            # response time
+            start_time = time.time()
             output = model.predict(df_input)
+            end_time = time.time()
+            respose_time = end_time - start_time
+            respose_time = round(respose_time,2)
             result = int(output[0])
 
         except Exception as e:
             raise e
         
-        return render_template('prediction.html',result = result)
+        return render_template('prediction.html',result = result, time = respose_time)
 
     return jsonify({'Error': 'invalid request.'})
    

@@ -26,6 +26,17 @@
         h1 {
             text-align: center;
         }
+        .notice {
+            text-align: right;
+            margin-top: 10px;
+            color: #ff0000;
+        }
+        
+        .notice p {
+            font-style: italic;
+            font-size: 14px;
+            font-weight: bold;
+        }
         /* Add other CSS styles as needed for your content */
     </style>
 </head>
@@ -35,11 +46,18 @@
         <h1><div class="result-message">
             {% if result == 1 %}
                 <div class="error-message">
-                    <p>Oh, fantastic! HFDS is thrilled to inform you that due to your impeccable credit history, we are unable to issue a new credit card. Please continue to excel in your financial prowess. We are genuinely heartbroken to announce that we will cease offering our credit services after your outstanding dues are paid. Such a loss.</p>
+                    <p>HFDS is thrilled to inform you that due to your impeccable credit history, we are unable to issue a new credit card. Please continue to excel in your financial prowess. We are <em>genuinely heartbroken to announce that we will <u>cease</u> offering our credit services after your outstanding dues are paid. Such a loss</em>.</p>
+
+                    <div class="notice">
+                        <p>* Model Response time<b> {{ time }}</b> seconds.</p>
+                    </div>
                 </div>
             {% else %}
                 <div class="success-message">
-                    <p>Welcome to HFDS World! We bring excellence and financial solutions. We are incredibly honored to have you as a customer, and <b>we are ecstatic to issue you a new credit card</b>. Thank you for choosing us!</p>
+                    <p>Welcome to HFDS World! We bring excellence and financial solutions. We are incredibly honored to have you as a customer, and <em>we are <u>ecstatic to issue</u> you a new credit card</em>. Thank you for choosing us!</p>
+<div class="notice">
+                        <p>* Model Response time<b> {{ time }}</b> seconds.</p>
+                    </div>
                 </div>
             {% endif %}
         </div></h1>

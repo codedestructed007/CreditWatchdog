@@ -164,3 +164,4 @@ Dataset/
 Credit_card_fraud_detection.ipynb
 artifacts/
 experiment.py
+notebook/

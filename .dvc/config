@@ -1,0 +1,10 @@
+[core]
+    remote = storage
+['remote "myremote"']
+    url = azure://dvcontainer_1698819875971
+    version_aware = true
+['remote "my_gdrive"']
+    url = gdrive://1zrzbd0zIzEcSyAVN297SWTqceeteuPVz
+    gdrive_acknowledge_abuse = true
+['remote "storage"']
+    url = gdrive://1zrzbd0zIzEcSyAVN297SWTqceeteuPVz

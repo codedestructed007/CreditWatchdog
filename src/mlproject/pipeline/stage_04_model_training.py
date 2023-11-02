@@ -24,7 +24,7 @@ if __name__ == '__main__':
         obj = ModelTrainingPipeline()
         obj.main()
         logger.info('>>>>>>Stage {} completed'.format(STAGE_NAME))
-    except Exception as e:
+    except Exception as e:  
         logger.exception(e)
         raise e
 

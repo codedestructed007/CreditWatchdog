@@ -13,4 +13,3 @@ xgboost
 flask
 dvc
 dvc-gdrive
-pytest

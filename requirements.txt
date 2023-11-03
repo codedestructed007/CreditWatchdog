@@ -10,6 +10,6 @@ joblib
 imblearn
 feature_engine
 xgboost
-flask
+Flask
 dvc
 dvc-gdrive

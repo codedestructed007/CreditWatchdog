@@ -6,7 +6,9 @@ import pandas as pd
 import joblib
 from src.mlproject import logger
 
-app = Flask(__name__)
+application = Flask(__name__)
+
+app = application
 
 
 @app.route('/',methods=['GET'])
